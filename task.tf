@@ -25,6 +25,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
           awslogs-group         = var.ecs_cluster_name
           awslogs-region        = var.region
           awslogs-stream-prefix = var.name
+          awslogs-create-group  = "true"
         }
       },
       portMappings = [
