@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
   container_definitions = jsonencode([
     {
       name      = var.name
-      image     = "${aws_ecr_repository.ecr_repository.repository_url}:latest"
+      image     = "${data.aws_ecr_repository.this.repository_url}:latest"
       cpu       = var.container_cpu
       memory    = var.container_memory
       essential = true
@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
       healthCheck = length(var.healthCheck) > 0 ? var.healthCheck : null
 
       environment = [for k, v in var.container_environments : { name : k, value : v }]
-      secrets     = [for k, v in var.container_secrets : { name : k, valueFrom : format("%s:%s::", aws_secretsmanager_secret.this[0].arn, k) }]
+      secrets     = [for k, v in var.container_secrets : { name : k, valueFrom : format("%s:%s::", data.aws_secretsmanager_secret.this.arn, k) }]
     }
   ])
   runtime_platform {

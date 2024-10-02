@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = format("%s-%ssEcsTaskExecutionRole", var.project_name, var.name)
+  name = format("%s-%sEcsTaskExecutionRole", var.project_name, var.name)
   assume_role_policy = jsonencode({
     "Version" : "2008-10-17",
     "Statement" : [
@@ -26,7 +26,7 @@ resource "aws_iam_policy" "secrets_manager_policy" {
       {
         Effect   = "Allow",
         Action   = ["secretsmanager:GetSecretValue"],
-        Resource = aws_secretsmanager_secret.this[0].arn,
+        Resource = data.aws_secretsmanager_secret.this.arn,
       }
     ],
   })
