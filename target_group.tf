@@ -20,7 +20,7 @@ resource "aws_lb_target_group" "main" {
 
 
 resource "aws_lb_listener_rule" "main" {
-  listener_arn = data.aws_lb_listener.https.arn
+  listener_arn = data.aws_lb_listener.http.arn
   # priority     = 100
 
   action {

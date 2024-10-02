@@ -52,7 +52,17 @@ data "aws_lb" "main" {
   name = "${var.project_name}-alb"
 }
 
-data "aws_lb_listener" "https" {
+data "aws_lb_listener" "http" {
   load_balancer_arn = data.aws_lb.main.arn
-  port              = 443
+  port              = 80
+}
+
+## Secret
+data "aws_secretsmanager_secret" "this" {
+  name = format("%s/%s/%s", var.project_name, var.environment, var.name)
+}
+
+## ECR
+data "aws_ecr_repository" "this" {
+  name = format("%s-%s-%s", var.project_name, var.environment, var.name)
 }
