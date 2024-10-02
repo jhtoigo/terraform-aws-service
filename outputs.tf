@@ -7,3 +7,8 @@ output "service_name" {
   description = "Name of the ECS service"
   value       = aws_ecs_service.ecs_service.name
 }
+
+output "load_balancer_url" {
+  description = "Load balancer DNS Name"
+  value       = data.aws_lb.main.dns_name
+}
