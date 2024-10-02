@@ -82,6 +82,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_load_balancer_url"></a> [load\_balancer\_url](#output\_load\_balancer\_url) | Load balancer DNS Name |
 | <a name="output_service_name"></a> [service\_name](#output\_service\_name) | Name of the ECS service |
 | <a name="output_task_definition_arn"></a> [task\_definition\_arn](#output\_task\_definition\_arn) | ARN of the ECS task definition |
 <!-- END_TF_DOCS -->
